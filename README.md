@@ -5,4 +5,6 @@ Analysis of the top rated restaurants in the city of Mumbai according to Swiggy 
 
 The set contains all the outlets in the city that have a rating of 4 or above. It mentions their ratings, the type of food they specialize in, their average delivery time, average cost and if there are any offers or coupons that can be used to get a better deal.
 
-Feel free to go through the dataset and use it for your projects.
+Feel free to go through the dataset and project.
+File name - Mumbai_restaurants.csv(49.46 kB)
+Dataset by - ANURAG BANTU 
