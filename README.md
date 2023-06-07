@@ -25,7 +25,7 @@ It mentions their ratings, the type of food they specialize in, their average de
 ### 10 Show details of restaurats with Indian speciality, sort cost lowest to highest
 ### 11 How many restaurants have indian as one of their specialities
 ### 12 how many restaurants have only indian specialities (no other special)
-### 13 Waht is the rating given to each Special
+### 13 What is the rating given to each Special
 ### 14 Total How many restaurants are there by each rating type? No. of restro by rating?
 ### 15 List different types of coupons are available? 
 ### 16 Coupon wise restaurants? # List the popularity of coupons being used by restaurants
