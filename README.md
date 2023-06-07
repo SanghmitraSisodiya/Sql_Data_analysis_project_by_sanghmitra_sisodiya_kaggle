@@ -20,21 +20,37 @@ WHERE
 
 
 AND, OR, NOT
+
 ORDER BY
+
 NULL Values
+
 UPDATE
+
 DELETE
+
 LIMIT
+
 MIN and MAX
+
 COUNT, AVG, SUM
+
 LIKE
+
 IN
+
 BETWEEN
+
 Aliases
+
 Joins
+
 MySQL GROUP BY
+
 HAVING
+
 Database
+
 MySQL Alter Table
 
 ## Feel free to go through the dataset and project.
