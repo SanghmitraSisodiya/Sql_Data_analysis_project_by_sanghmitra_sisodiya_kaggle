@@ -32,6 +32,7 @@ ALTER TABLE restro_data
 MODIFY COLUMN rating int;
 
 # 8 print new data tye
+
 select*from restro_data;
 describe restro_data;
 
@@ -44,6 +45,11 @@ set delivery_time = TRIM(' MINS' FROM delivery_time)
 ALTER TABLE restro_data
 MODIFY COLUMN delivery_time int;
 describe restro_data;
+
+
+#how many total restaurants are there in the data?
+Select count(name ) from restro_data;
+
 
 #n 9 o. of restro each ctegry
 select specials as category, count(distinct name) as total_restro from restro_data
@@ -61,6 +67,7 @@ with cte1 as (
     where specials like "%indian%"
     group by specials
     order by total_restro desc)
+    
 select sum(total_restro)
 from cte1; 
 
@@ -70,6 +77,7 @@ with cte1 as (
      where specials in ("indian")
      group by specials
      order by total_restro desc)
+     
 select sum(total_restro)
 from cte1; 
 
@@ -106,43 +114,54 @@ select *from restro_data;
 
 # 19 most expensive restro 1500 plus
 with cte1 as(
-select *from restro_data where cost >1499
-order by cost)
+  select *from restro_data where cost >1499
+  order by cost)
+  
 select*, dense_rank () over (order by cost desc) from cte1
 order by cost desc;
 
 # 20 how many restro have 1500 plus cost?
 with cte1 as(
-select *from restro_data where cost >1499
-order by cost)
+  select *from restro_data where cost >1499
+  order by cost)
+  
 select Count(distinct name) from cte1;
 
 #21 longest delivery_time 1hr plus
 with cte1 as(
-select *from restro_data where delivery_time > 60
-order by delivery_time)
+  select *from restro_data 
+  where delivery_time > 60
+  order by delivery_time)
+  
 select distinct name, rating, specials, cost, delivery_time, dense_rank () over (order by delivery_time desc) as denserank from cte1
 order by delivery_time desc;
 
 # 22 how many restro have delivery_time 1hr plus
+
 with cte1 as(
-select *from restro_data where delivery_time > 60
-order by delivery_time)
+  select *from restro_data 
+  where delivery_time > 60
+  order by delivery_time)
+  
 select Count(distinct name) as restaurants from cte1;
 
 # 23 30min or less delivery_time
 with cte1 as(
-select *from restro_data where delivery_time < 31
-order by delivery_time)
+  select *from restro_data 
+  where delivery_time < 31
+  order by delivery_time)
+  
 select distinct name, specials, cost, delivery_time, dense_rank () 
 over (order by delivery_time) as denserank from cte1
 order by delivery_time;
 
 # 24. how many rwestro have 30min less delivery_time
 with cte1 as(
-select *from restro_data where delivery_time < 31
-order by delivery_time)
-select Count(distinct name) as restaurants from cte1;
+  select *from restro_data 
+  where delivery_time < 31
+  order by delivery_time)
+  
+ select Count(distinct name) as restaurants from cte1;
 
 # 25. Special wise average Cost                    r karo                     ating
 select specials, avg(rating) as avg_rating from restro_data
@@ -151,13 +170,17 @@ order by avg_rating asc;
 
 # 26. Clustering on the basis of type of specials and total number of factors
 with cte1 as (
-select specials, count(distinct name) as total_restro, count(distinct rating) as unique_rating, 
-count(distinct delivery_time) as distinct_time, count(distinct cost) as unique_cost, 
-count(distinct coupons) as unique_coupon
- from restro_data
-group by specials
+  select specials, count(distinct name) as total_restro, 
+  count(distinct rating) as unique_rating, 
+  count(distinct delivery_time) as distinct_time, 
+  count(distinct cost) as unique_cost, 
+  count(distinct coupons) as unique_coupon 
+  from restro_data
+  group by specials
 )
-select specials, sum(total_restro), sum(unique_rating), sum(distinct_time), 
+
+select specials, sum(total_restro), 
+sum(unique_rating), sum(distinct_time), 
 sum(unique_cost) , sum(unique_coupon)
 from cte1
 group by specials
@@ -170,13 +193,15 @@ order by avg(cost), avg(delivery_time)asc, avg(rating)desc ;
 
 # 28. Clustering on the basis of rating and total number of factors
 with cte1 as (
-select rating, count(distinct specials) as distinct_specials, 
-count(distinct name) as total_restro, 
-count(distinct delivery_time) as distinct_time, count(distinct cost) as unique_cost, 
-count(distinct coupons) as unique_coupon
- from restro_data
-group by rating
+  select rating, count(distinct specials) as distinct_specials,
+  count(distinct name) as total_restro, 
+  count(distinct delivery_time) as distinct_time, 
+  count(distinct cost) as unique_cost, 
+  count(distinct coupons) as unique_coupon 
+  from restro_data
+  group by rating
 )
+
 select rating, sum(total_restro), sum(distinct_specials), sum(distinct_time), 
 sum(unique_cost) , sum(unique_coupon)
 from cte1
@@ -184,17 +209,20 @@ group by rating
 ;
 
 # 29. rating wise avg cost time 
-select rating, count(distinct name) as no_of_restro, avg(cost) , avg(delivery_time) from restro_data
+select rating, count(distinct name) as no_of_restro, avg(cost), 
+avg(delivery_time) from restro_data
 group by rating
 order by avg(cost), avg(delivery_time)asc ;
 
 # 30. Clustering on the basis of delivery_time and total number of related factors
+
 with cte1 as (
-select delivery_time, count(distinct name) as total_restro, count(distinct specials) as distinct_specials ,
-count(distinct rating) as unique_rating, 
-count(distinct cost) as unique_cost, count(distinct coupons) as unique_coupon
-from restro_data
-group by delivery_time)
+  select delivery_time, count(distinct name) as total_restro, 
+  count(distinct specials) as distinct_specials ,
+  count(distinct rating) as unique_rating, 
+  count(distinct cost) as unique_cost, count(distinct coupons) as unique_coupon
+  from restro_data
+  group by delivery_time)
 
 select delivery_time, sum(total_restro), sum(distinct_specials), sum(unique_rating), 
 sum(unique_cost) , sum(unique_coupon)
@@ -210,12 +238,14 @@ order by delivery_time desc ;
 
 # 32. Clustering on the basis ofcost and total number of distinct related factors
 with cte1 as (
-select cost, count(distinct delivery_time) as distinct_delivery_times, count(distinct name) as total_restro, 
-count(distinct specials) as distinct_specials ,
-count(distinct rating) as unique_rating, 
-count(distinct coupons) as unique_coupon
-from restro_data
-group by cost)
+  select cost, count(distinct delivery_time) as distinct_delivery_times, 
+  count(distinct name) as total_restro, 
+  count(distinct specials) as distinct_specials ,
+  count(distinct rating) as unique_rating, 
+  count(distinct coupons) as unique_coupon
+  from restro_data
+  group by cost)
+  
 select cost, sum(distinct_delivery_times), sum(total_restro), sum(distinct_specials), 
 sum(unique_rating), sum(unique_coupon)
 from cte1
@@ -229,11 +259,13 @@ order by cost desc ;
 
 # 34. Clustering on the basis of coupons and distinct total number of factors
 with cte1 as (
-select coupons, count(distinct specials) as distinct_specials, count(distinct name) as total_restro, count(distinct rating) as unique_rating, 
-count(distinct delivery_time) as distinct_time, count(distinct cost) as unique_cost
- from restro_data
-group by coupons
+  select coupons, count(distinct specials) as distinct_specials, count(distinct name) as total_restro, 
+  count(distinct rating) as unique_rating, count(distinct delivery_time) as distinct_time, 
+  count(distinct cost) as unique_cost
+  from restro_data
+  group by coupons
 )
+
 select coupons, sum(distinct_specials), sum(total_restro), sum(unique_rating), sum(distinct_time)
 from cte1
 group by coupons
@@ -247,103 +279,112 @@ order by no_of_restro desc ;
 
 # 36. show top 5 most expensive restaurants
 with cte1 as(
-select * , 
-dense_rank () over (order by cost desc) as ranking
-from restro_data
+  select * , 
+  dense_rank () over (order by cost desc) as ranking
+  from restro_data
 )
+
 select distinct name, cost, ranking
  from cte1
  where ranking <6;
  
  # 37. show top 5 most budget friendly restaurants
+ 
 with cte1 as(
-select * , 
-dense_rank () over (order by cost) as ranking
-from restro_data
+  select * , 
+  dense_rank () over (order by cost) as ranking
+  from restro_data
 )
+
 select distinct name, cost, ranking
  from cte1
  where ranking <6;
  
  # 38. show top 5 most famous coupons
-with cte1 as
-( select distinct(coupons) as Coupons, count(distinct name) as total_restro
-from restro_data
-group by Coupons
-order by total_restro desc),
-cte2 as
-(select *, dense_rank () over (order by total_restro desc) as ranking 
-from cte1)
+with cte1 as(
+  select distinct(coupons) as Coupons, count(distinct name) as total_restro
+  from restro_data
+  group by Coupons
+  order by total_restro desc),
+cte2 as (
+  select *, dense_rank () over (order by total_restro desc) as ranking 
+  from cte1)
+  
 select * from cte2
 where ranking <6 ;
 
  # 39. top 5 most famous specials
- with cte1 as
-( select distinct(specials) as specials, count(distinct name) as total_restro
-from restro_data
-group by specials
-order by total_restro desc),
-cte2 as
-(select *, dense_rank () over (order by total_restro desc) as ranking 
-from cte1)
+ with cte1 as ( 
+   select distinct(specials) as specials, count(distinct name) as total_restro
+   from restro_data
+   group by specials
+   order by total_restro desc),
+cte2 as (
+  select *, dense_rank () over (order by total_restro desc) as ranking 
+  from cte1)
+  
 select * from cte2
 where ranking <6 ;
 
  # 40. top 5 least famous specials
-  with cte1 as
-( select distinct(specials) as specials, count(distinct name) as total_restro
-from restro_data
-group by specials
-order by total_restro),
-cte2 as
-(select *, dense_rank () over (order by total_restro ) as ranking 
-from cte1)
+  with cte1 as (
+    select distinct(specials) as specials, count(distinct name) as total_restro
+    from restro_data
+    group by specials
+    order by total_restro),
+cte2 as (
+  select *, dense_rank () over (order by total_restro ) as ranking 
+  from cte1)
+  
 select * from cte2
 where ranking <6 ;
  
  # 41. top 5 most famous frequency of cost 
-  with cte1 as
-( select distinct(cost) as cost, count(distinct name) as total_restro
-from restro_data
-group by cost
-order by total_restro desc),
-cte2 as
-(select *, dense_rank () over (order by total_restro desc) as ranking 
-from cte1)
+ with cte1 as( 
+  select distinct(cost) as cost, count(distinct name) as total_restro
+    from restro_data
+    group by cost
+    order by total_restro desc),
+cte2 as(
+  select *, dense_rank () over (order by total_restro desc) as ranking 
+  from cte1)
+  
 select * from cte2
 where ranking <6 ;
 
 
  # 42. top 5 least famous frequency of cost 
-  with cte1 as
-( select distinct(cost) as cost, count(distinct name) as total_restro
-from restro_data
-group by cost
-order by total_restro ),
-cte2 as
-(select *, dense_rank () over (order by total_restro) as ranking 
-from cte1)
+  with cte1 as(
+    select distinct(cost) as cost, count(distinct name) as total_restro
+    from restro_data
+    group by cost
+    order by total_restro ),
+cte2 as(
+  select *, dense_rank () over (order by total_restro) as ranking 
+  from cte1)
+  
 select * from cte2
 where ranking <6 ;
 
  # 43.  top 5 most famous frequency of delivery time
-   with cte1 as
-( select distinct(delivery_time) as delivery_time, count(distinct name) as total_restro
-from restro_data
-group by delivery_time
-order by total_restro desc),
-cte2 as
-(select *, dense_rank () over (order by total_restro desc) as ranking 
+   with cte1 as(
+     select distinct(delivery_time) as delivery_time, count(distinct name) as total_restro
+     from restro_data
+     group by delivery_time
+     order by total_restro desc),
+cte2 as(
+  select *, dense_rank () over (order by total_restro desc) as ranking 
 from cte1)
+
 select * from cte2
 where ranking <6 ;
  
   # 44.  top 5 least famous frequency of delivery time
-   with cte1 as
-( select distinct(delivery_time) as delivery_time, count(distinct name) as total_restro
-from restro_data
-group by delivery_time
-order by total_restro ),
+with cte1 as(
+  select distinct(delivery_time) as delivery_time, count(distinct name) as total_restro
+  from restro_data
+  group by delivery_time
+  order by total_restro ),
 cte2 as
 (select *, dense_rank () over (order by total_restro ) as ranking 
 from cte1)
@@ -353,27 +394,27 @@ where ranking <6 ;
 
  # 45. top 5 most famous frequency of cost 
   with cte1 as
-( select distinct(cost) as cost, count(distinct name) as total_restro
-from restro_data
-group by cost
-order by total_restro desc),
-cte2 as
-(select *, dense_rank () over (order by total_restro desc) as ranking 
+( 
+  select distinct(cost) as cost, count(distinct name) as total_restro
+  from restro_data
+  group by cost
+  order by total_restro desc),
+cte2 as(
+  select *, dense_rank () over (order by total_restro desc) as ranking 
 from cte1)
+
 select * from cte2
 where ranking <6 ;
 
  # 46. top 5 most least frequency of cost 
-  with cte1 as
-( select distinct(cost) as cost, count(distinct name) as total_restro
-from restro_data
-group by cost
-order by total_restro ),
-cte2 as
-(select *, dense_rank () over (order by total_restro ) as ranking 
-from cte1)
+ with cte1 as( 
+   select distinct(cost) as cost, count(distinct name) as total_restro
+   from restro_data
+   group by cost
+   order by total_restro ),
+cte2 as(
+  select *, dense_rank () over (order by total_restro ) as ranking 
+  from cte1)
+  
 select * from cte2
 where ranking <6 ;
-
-#how many total restaurants are there in the data?
-Select count(name ) from restro_data;
