@@ -105,6 +105,9 @@ Database
 MySQL Alter Table
 
 ## Feel free to go through the dataset and project.
+[Github PowerBi Data Viualization - (https://github.com/SanghmitraSisodiya/Restaurant_data_analysis_PowerBI)
+
+For the Powerbi Interactive portfolio - visit my [Data Visualization Portfolio] (https://www.novypro.com/profile_projects/sanghmitrasisodiya)
 
 ## File name - Mumbai_restaurants.csv(49.46 kB)
 
