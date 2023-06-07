@@ -21,15 +21,15 @@ It mentions their ratings, the type of food they specialize in, their average de
 ### 7 Change the Data type 
 ### 8 print new data type
 ### (Data Analysis)
-### 9 No. of restaurants by each ctegry
-### 10 show details of restaurats with Indian speciality, sort cost lowest to highest
+### 9 No. of restaurants by each categry
+### 10 Show details of restaurats with Indian speciality, sort cost lowest to highest
 ### 11 How many restaurants have indian as one of their specialities
 ### 12 how many restaurants have only indian specialities (no other special)
 ### 13 Waht is the rating given to each Special
 ### 14 Total How many restaurants are there by each rating type? No. of restro by rating?
-### 15 list different types of coupons are available? 
+### 15 List different types of coupons are available? 
 ### 16 Coupon wise restaurants? # List the popularity of coupons being used by restaurants
-### 17 coupon wise avg rating
+### 17 Coupon wise avg rating
 ###  18                 PRINT 
 ### 19 Most expensive restro 1500 plus
 ### 20 How many restro have 1500 plus cost?
