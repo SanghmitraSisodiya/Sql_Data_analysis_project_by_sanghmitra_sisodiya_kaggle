@@ -2,36 +2,23 @@
 
 # 1 use database
 use sql_project_mumbairest;
+
 # 2 table name change
 ALTER TABLE project6sqlmumbai_restaurants
 RENAME TO restro_data;
+
 # 3 print all
-#                   -----------------------
 select*from restro_data;
+                 -----------------------
+# 4 describe dataset
 describe restro_data;
 select count(*) from restro_data;
-#                    -----------------------
+                   -----------------------
 
-# 4 Trim extra characters from Cost Column
+# 5 Trim extra characters from Cost Column
 Update restro_data set Cost = TRIM('â‚¹' FROM cost)
 ;
 select * from restro_data ;
-
-# 5 find null
-SELECT * FROM restro_data
-WHERE column1 IS NULL;
-SELECT * FROM restro_data
-WHERE name IS NULL;
-SELECT * FROM restro_data
-WHERE rating IS NULL;
-SELECT * FROM restro_data
-WHERE specials IS NULL;
-SELECT * FROM restro_data
-WHERE Delivery_time IS NULL;
-SELECT * FROM restro_data
-WHERE Cost IS NULL;
-SELECT * FROM restro_data
-WHERE Coupons IS NULL;
 
 # 6 alter column name
 #use ( `` ) for column names with spaces
@@ -70,19 +57,19 @@ order by cost;
 
 # 11 how many restaurants have indian as one of their speciality
 with cte1 as (
-select specials as category, count(distinct name) as total_restro from restro_data
-where specials like "%indian%"
-group by specials
-order by total_restro desc)
+    select specials as category, count(distinct name) as total_restro from restro_data
+    where specials like "%indian%"
+    group by specials
+    order by total_restro desc)
 select sum(total_restro)
 from cte1; 
 
 # 12 how many restaurants have only indian speciality
 with cte1 as (
-select specials as category, count(distinct name) as total_restro from restro_data
-where specials in ("indian")
-group by specials
-order by total_restro desc)
+     select specials as category, count(distinct name) as total_restro from restro_data
+     where specials in ("indian")
+     group by specials
+     order by total_restro desc)
 select sum(total_restro)
 from cte1; 
 
