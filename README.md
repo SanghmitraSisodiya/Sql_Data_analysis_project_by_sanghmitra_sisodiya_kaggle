@@ -4,7 +4,7 @@
 
 
 
-## About Dataset
+## About the Dataset 
 Analysis of the top rated restaurants in the city of Mumbai according to Swiggy which is a popular online food ordering and delivery platform based in India. 
 This set of data was obtained from **Kaggle** , which was initially obtained by web scraping from the Swiggy website.
 The set contains all the outlets in the city that have a rating of 4 or above. 
