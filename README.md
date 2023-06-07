@@ -1,6 +1,6 @@
 Sql_Data_analysis_project_by_sanghmitra_sisodiya_kaggle
 
-**Mumbai Swiggy Restaurant Data Analysis - SQL - Portfolio by Sanghmitra Sisodiya 
+# Mumbai Swiggy Restaurant Data Analysis - SQL - Portfolio by Sanghmitra Sisodiya 
 
 #About Dataset
 Analysis of the top rated restaurants in the city of Mumbai according to Swiggy which is a popular online food ordering and delivery platform based in India. 
