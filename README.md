@@ -1,5 +1,5 @@
 # Mumbai's Top Rated Swiggy Restaurants - Data Analysis using SQL- 
-## Project by Sanghmitra Sisodiya [Linkedin](https://in.linkedin.com/in/sanghmitra-sisodiya-229986173)
+## Project by Sanghmitra Sisodiya ( [Linkedin](https://in.linkedin.com/in/sanghmitra-sisodiya-229986173) )
 ![Screenshot of Swiggy Logo](https://i0.wp.com/logotaglines.com/wp-content/uploads/2021/01/Swiggy-Logo-Tagline-Slogan.jpg?fit=1200%2C900&ssl=1)
 
 
