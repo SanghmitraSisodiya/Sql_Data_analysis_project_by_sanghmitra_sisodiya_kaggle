@@ -1,4 +1,4 @@
-# **Swiggy Restaurant Data Analysis - Kaggle Set - Sanghmitra Sisodiya**
+# Swiggy Restaurant Data Analysis - Kaggle Set - Sanghmitra Sisodiya**
 
 # 1 use database
 use sql_project_mumbairest;
