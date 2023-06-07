@@ -9,52 +9,54 @@ This set of data was obtained from **Kaggle** , which was initially obtained by 
 The set contains all the outlets in the city that have a rating of 4 or above. 
 It mentions their ratings, the type of food they specialize in, their average delivery time, average cost and if there are any offers or coupons that can be used to get a better deal.
 
-## Problem Statements 
-### 1 use database
-### 2 table name change
-### 3 print all
-### 4 describe dataset
-### 5 Trim extra characters from Cost Column
-### 6 alter column name
-### 7 rating daata type alter 
+## Problem Statements / Queries Executed
+### 1 Use database
+### 2 Change Table name
+### 3 Print all
+### 4 Describe the entire dataset
+### (Data Wrangling)
+### 5 Trim the extra and unwanted characters
+### 6 Alter the column names
+### 7 Change the Data type 
 ### 8 print new data type
-### 9 no. of restro each ctegry
+### (Data Analysis)
+### 9 No. of restaurants by each ctegry
 ### 10 show details of restaurats with Indian speciality, sort cost lowest to highest
-### 11 how many restaurants have indian as one of their speciality
-### 12 how many restaurants have only indian specialities
-### 13 Special wise average rating
-### 14 total How many restaurants are there by each rating type? No. of restro by rating?
+### 11 How many restaurants have indian as one of their specialities
+### 12 how many restaurants have only indian specialities (no other special)
+### 13 Waht is the rating given to each Special
+### 14 Total How many restaurants are there by each rating type? No. of restro by rating?
 ### 15 list different types of coupons are available? 
-### 16 coupon wise restaurants? # List the popularity of coupons being used by restaurants
+### 16 Coupon wise restaurants? # List the popularity of coupons being used by restaurants
 ### 17 coupon wise avg rating
 ###  18                 PRINT 
-### 19 most expensive restro 1500 plus
-### 20 how many restro have 1500 plus cost?
-### 21 longest delivery_time 1hr plus
-### 22 how many restro have delivery_time 1hr plus
-### 24. how many rwestro have 30min less delivery_time
+### 19 Most expensive restro 1500 plus
+### 20 How many restro have 1500 plus cost?
+### 21 Longest delivery_time 1hr plus
+### 22 How many restro have delivery_time 1hr plus
+### 24. How many rwestro have 30min less delivery_time
 ### 25. Special wise average Cost                    r karo                     ating
 ### 26. Clustering on the basis of type of specials and total number of factors
-### 27. special wiseavg cost time rating
+### 27. Special wiseavg cost time rating
 ### 28. Clustering on the basis of rating and total number of factors
-### 29. rating wise avg cost time 
+### 29. Rating wise avg cost time 
 ### 30. Clustering on the basis of delivery_time and total number of related factors
-### 31. special wiseavg cost time rating
+### 31. Special wiseavg cost time rating
 ### 32. Clustering on the basis ofcost and total number of distinct related factors
-### 33. cost wise avg
+### 33. Cost wise avg
 ### 34. Clustering on the basis of coupons and distinct total number of factors
-### 35. coupon wise avg cost time rating
-### 36. show top 5 most expensive restaurants
-### 37. show top 5 most budget friendly restaurants
-### 38. show top 5 most famous coupons
-### 39. top 5 most famous specials
-### 40. top 5 least famous specials
-### 41. top 5 most famous frequency of cost 
+### 35. Coupon wise avg cost time rating
+### 36. Show top 5 most expensive restaurants
+### 37. Show top 5 most budget friendly restaurants
+### 38. Show top 5 most famous coupons
+### 39. Top 5 most famous specials
+### 40. Top 5 least famous specials
+### 41. Top 5 most famous frequency of cost 
 ### 42. top 5 least famous frequency of cost 
-### 43.  top 5 most famous frequency of delivery time
-### 44.  top 5 least famous frequency of delivery time
-### 45. top 5 most famous frequency of cost 
-### 46. top 5 most least frequency of cost 
+### 43. Top 5 most famous frequency of delivery time
+### 44. Top 5 least famous frequency of delivery time
+### 45. Top 5 most famous frequency of cost 
+### 46. Top 5 most least frequency of cost 
 
 # SQL features used - 
 
